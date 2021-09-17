@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %} Blog CodeHero {% endblock %}
+
+{% block 'styles' %}
+    <link rel="stylesheet" href="{% static 'posts/css/home.css' %}">
+{% endblock %}
+
+{% block 'body' %}
+    <div class="summary">
+        <div class="summary-text">
+            <h1>Bem-vindo ao CodeHero</h1>
+            <p>Aqui no CodeHero você encontra Posts sobre várias Linguagens de Programação e Tecnologia em Geral.</p>
+            
+            <button class="btn-more"><a href="#">Saiba mais</a></button>
+        </div>
+    </div>
+
+    <main class="post-list">
+        <a href="#" class="add-post"><i class="fas fa-plus"></i> Criar um novo Post</a>
+
+        <div class="search-post">
+            <form method="GET" action="{% url 'home-search' %}" class="search-form">
+                <input type="search" placeholder="Procure posts aqui" name="search" value="{{ request.GET.search }}">
+                <i class="fas fa-search"></i>
+            </form>
+        
+            <p class="search-info">
+                <i class="fas fa-info-circle"></i>
+                Pesquise por título ou Categoria.
+            </p>
+        </div>
+
+        <div id="select-sort-posts">
+            <div id="sort-posts">
+                <button id="btn-sort-posts">
+                    Ordenar por:
+                    <i class="fas fa-caret-down"></i>
+                </button>
+            
+                <ul id="list-sort-posts">
+                    <li>
+                        <a href="{% if request.GET.search%}?search={{ request.GET.search }}&sort=recents{% else %}?sort=recents{% endif %}">Mais recentes</a>
+                    </li>
+                    
+                    <li>
+                        <a href="{% if request.GET.search%}?search={{ request.GET.search }}&sort=olds{% else %}?sort=olds{% endif %}">Mais antigos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="dividing-line">
+        {% include 'partials/_messages.html' %}
+
+        {% if posts %}
+            <div class="row">
+                {% for post in posts %}
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card mb-5 shadow-sm">
+                            <a href="#"><img src="{{ post.imagem.url }}" class="img-fluid" alt="{{ post.titulo }}"></a>
+                            
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <a href="/?search={{ post.categoria }}" class="button-category">{{ post.categoria }}</a>
+                                    <h1><a href="#" class="title-post">{{ post.titulo }}</a></h1>
+                                </div>
+
+                                <div class="card-text">
+                                    <p>Uma árvore binária é uma estrutura de dados caracterizada por: Ou não tem elemento algum (árvore vazia).</p>
+                                    
+                                    <a class="comments" href="#">
+                                        <i class="fa fa-comment"></i>
+                                        <span>{{ post.number_comments }} Comentários</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            {% include 'partials/_pagination.html' %}
+        {% else %}
+            <h2>Nenhum resultado encontrado ;(</h2>
+        {% endif %}
+    </main>
+{% endblock %}
+
+{% block 'scripts' %} 
+    <script src="{% static 'posts/js/home.js' %}"></script>
+{% endblock %}

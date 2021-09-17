@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('../fonts/Rajdhani/Rajdhani-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/Raleway-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto_Slab/RobotoSlab-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/Nunito/Nunito-SemiBold.ttf');
+}

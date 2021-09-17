@@ -1,0 +1,109 @@
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(43, 16, 80);
+    height: 55px;
+    padding: 0 40px 0px 80px;
+}
+
+#logo {
+    font-size: 1.5em;
+    font-family: 'Nunito';
+    color: rgba(245, 245, 245, 0.85);
+}
+
+#btn-mobile {
+    display: none;
+}
+
+#menu {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+#menu a {
+    display: block;
+    padding: .5rem;
+    color: whitesmoke;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+#menu a:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+
+@media (max-width: 550px) {
+    #menu {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 50px;
+        right: 0;
+        background: rgb(43, 16, 80);
+        z-index: 1000;
+        transition: .6s;
+        height: 0;
+        overflow-y: hidden;
+        margin: 0px auto;
+    }
+    
+    #nav.active #menu {
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+    }
+
+    #menu a {
+        padding: 1rem;
+        margin: 0 1rem;
+        border-bottom: 2px solid rgb(55, 17, 107);
+    }
+
+    #btn-mobile {
+        display: flex;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    #hamburger {
+        color: whitesmoke;
+        border-top: 2px solid;
+        width: 20px;
+    }
+
+    #hamburger::after, #hamburger::before {
+        display: block;
+        content: '';
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        margin-top: 5px;
+        transition: .3s;
+        position: relative;
+    }
+
+    #nav.active #hamburger {
+        border-top: none;
+    }
+
+    #nav.active #hamburger::before {
+        transform: rotate(135deg);
+    }
+
+    #nav.active #hamburger::after {
+        transform: rotate(225deg);
+        top: -7px;
+    }
+}
+
+@media (max-width: 400px) {
+    #header {
+        padding: 0px 20px;
+    }
+} 
