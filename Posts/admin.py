@@ -1,3 +1,4 @@
+from django_summernote.admin import SummernoteModelAdmin
 from django.contrib import admin
 
 from .models import Post, Categoria, Comentario
@@ -11,7 +12,9 @@ class CategoriaAdmin(admin.ModelAdmin):
     list_per_page = 5
 
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SummernoteModelAdmin):
+    summernote_fields = 'conteudo'
+    
     list_display = ('id', 'titulo', 'autor', 'categoria', 'publicado', 'data_criacao')
     list_display_links = ('id', 'titulo')
     list_editable = ('autor', 'categoria', 'publicado')

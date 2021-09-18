@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/daniel/Downloads/Blog CodeHero/myenv/bin/python" "$0" "$@"
+'''exec' "/home/daniel/MEGA/Meus Projetos Django/Blog CodeHero/myenv/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

@@ -1,4 +1,4 @@
-#!/home/daniel/Downloads/Blog CodeHero/myenv/bin/python
+#!/home/daniel/MEGA/Meus Projetos Django/Blog CodeHero/myenv/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

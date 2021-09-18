@@ -144,3 +144,7 @@ MESSAGE_TAGS = {
     constants.SUCCESS: 'alert alert-success',
     constants.WARNING: 'alert alert-warning',
 }
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+
+INSTALLED_APPS += ('django_summernote', )
