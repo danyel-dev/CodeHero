@@ -1,0 +1,49 @@
+/* Post Detail - Header */
+
+#post-detail-header {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+}
+
+.post-header-info {
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: linear-gradient(to bottom, rgba(31, 14, 56, 0.8) 20%, rgba(31, 14, 56, 0.6) 60%, transparent);
+
+    color: whitesmoke;
+}
+
+.post-header-info h1 {
+    font-family: 'Nunito';
+    margin-bottom: 0px
+}
+
+.post-header-info p {
+    margin-bottom: 5px;
+    font: 20px 'Raleway';
+}
+
+.post-header-info button {
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 0;
+    padding: 5px 10px;
+    color: rgb(107, 43, 226);
+    font-family: 'Nunito';
+} 
+
+/* Post Detail - Main */
+
+#post-detail-main {
+    width: 80%;
+    margin: 50px auto;
+}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Q, Count, Case, When
 from django.core.paginator import Paginator
@@ -59,5 +59,6 @@ def home_search(request):
     return render(request, 'posts/home.html', {'posts': posts})    
 
 
-def post_detail(request, id):
-    return HttpResponse("olá")
+def post_detail(request, id_post):
+    post = get_object_or_404(Post, id = id_post)
+    return render(request, 'posts/post_detail.html', {'post': post})
