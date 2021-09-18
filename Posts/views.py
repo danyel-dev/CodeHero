@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.db.models import Q, Count, Case, When
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -18,9 +19,9 @@ def home(request):
         )
     ).filter(publicado = True)
     
-    paginacao = Paginator(posts, 2)
+    paginator = Paginator(posts, 2)
     page = request.GET.get('page')
-    posts = paginacao.get_page(page)
+    posts = paginator.get_page(page)
 
     return render(request, 'posts/home.html', {'posts': posts})    
 
@@ -56,3 +57,7 @@ def home_search(request):
     posts = paginacao.get_page(page)
 
     return render(request, 'posts/home.html', {'posts': posts})    
+
+
+def post_detail(request, id):
+    return HttpResponse("olá")

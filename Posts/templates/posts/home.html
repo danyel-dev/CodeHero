@@ -59,11 +59,16 @@
                 {% for post in posts %}
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="card mb-5 shadow-sm">
-                            <a href="#"><img src="{{ post.imagem.url }}" class="img-fluid" alt="{{ post.titulo }}"></a>
+                            <a href="{% url 'post-detail' post.id %}">
+                                <img src="{{ post.imagem.url }}" class="img-fluid" alt="{{ post.titulo }}">
+                            </a>
                             
                             <div class="card-body">
                                 <div class="card-title">
-                                    <a href="/?search={{ post.categoria }}" class="button-category">{{ post.categoria }}</a>
+                                    <a href="/?search={{ post.categoria }}" class="button-category">
+                                        {{ post.categoria }}
+                                    </a>
+                                    
                                     <h1><a href="#" class="title-post">{{ post.titulo }}</a></h1>
                                 </div>
 
@@ -81,7 +86,7 @@
                 {% endfor %}
             </div>
             
-            {% include 'partials/_pagination.html' %}
+            {% include 'partials/_pagination.html' %} 
         {% else %}
             <h2>Nenhum resultado encontrado ;(</h2>
         {% endif %}
