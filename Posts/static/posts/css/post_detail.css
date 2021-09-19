@@ -51,28 +51,40 @@
 }
 
 .post-detail-comments h1 {
-    font: 2em 'Nunito';
+    font: 1.7em 'Nunito';
     color: rgba(0, 0, 0, 0.75);
 }
 
 .post-comments {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-top: 40px;
+    gap: 1.5rem;
+    margin-top: 30px;
     width: 90%;
 }
 
-.comment h2 {
+.comments {
+    padding: 15px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    transition: .3s ease-in;
+}
+
+.comments:hover {
+    background-color: rgba(110, 25, 221, 0.068);
+}
+
+.comments h2 {
     font: 20px 'PoppinsMedium';
     margin-bottom: 0px;
 }
 
-.comment p {
+.comments p {
     font-family: 'PoppinsRegular';
     margin-bottom: 10px;
 }
 
-.comment small {
+.comments small {
     font-family: 'PoppinsRegular';
 }

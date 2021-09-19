@@ -7,6 +7,8 @@ from django.contrib import messages
 from .models import Post
 from .models import Comentario
 
+from .forms import ComentarioForm
+
 
 def home(request):
     sort = request.GET.get('sort')
