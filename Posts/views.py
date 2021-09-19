@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 
 from .models import Post
+from .models import Comentario
 
 
 def home(request):
@@ -19,7 +20,7 @@ def home(request):
         )
     ).filter(publicado = True)
     
-    paginator = Paginator(posts, 2)
+    paginator = Paginator(posts, 6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
@@ -52,7 +53,7 @@ def home_search(request):
     if number_posts:
         messages.error(request, f'{number_posts} post(s) encontrado(s) para: "{search}"')
 
-    paginacao = Paginator(posts, 2)
+    paginacao = Paginator(posts, 6)
     page = request.GET.get('page')
     posts = paginacao.get_page(page)
 
@@ -61,4 +62,6 @@ def home_search(request):
 
 def post_detail(request, id_post):
     post = get_object_or_404(Post, id = id_post)
-    return render(request, 'posts/post_detail.html', {'post': post})
+    comments = Comentario.objects.order_by('-id').filter(post = id_post, publicado = True)
+
+    return render(request, 'posts/post_detail.html', {'post': post, 'comments': comments})

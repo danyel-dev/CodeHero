@@ -18,5 +18,24 @@
 
     <main id="post-detail-main">
         {{ post.conteudo|safe }}
+
+        <div class="post-detail-comments">
+            <h1>{{ comments.count }} comentario(s)</h1>
+
+            {% if comments %}
+                <div class="post-comments">
+                    {% for comment in comments %}
+                        <div class="comment">
+                            <h2>{{ comment.titulo }}</h2>
+                            <p>{{ comment.comentario }}</p>
+                            
+                            <small>
+                                {{ comment.nome }} - {{ comment.data_comentario }}
+                            </small>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
     </main>
 {% endblock %}
