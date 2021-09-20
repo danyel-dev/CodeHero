@@ -66,4 +66,6 @@ def post_detail(request, id_post):
     post = get_object_or_404(Post, id = id_post)
     comments = Comentario.objects.order_by('-id').filter(post = id_post, publicado = True)
 
-    return render(request, 'posts/post_detail.html', {'post': post, 'comments': comments})
+    form = ComentarioForm()
+
+    return render(request, 'posts/post_detail.html', {'post': post, 'comments': comments, 'form': form})

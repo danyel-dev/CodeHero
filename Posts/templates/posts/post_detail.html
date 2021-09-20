@@ -38,5 +38,26 @@
                 </div>
             {% endif %}
         </div>
+ 
+        <div id="post-add-comment">
+            <form method="post">
+                {% csrf_token %}
+
+                <p>
+                    <label for="id_nome">Nome</label>
+                    {{ form.nome }}
+                </p>
+                <p>
+                    <label for="id_titulo">Título</label>
+                    {{ form.titulo }}
+                </p>
+                <p>
+                    <label for="id_comentario">Comentario</label>
+                    {{ form.comentario }}
+                </p>
+
+                <button type="submit" class='btn btn-success'>Comentar</button>
+            </form>
+        </div>
     </main>
 {% endblock %}
