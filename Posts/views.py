@@ -67,18 +67,18 @@ def post_detail(request, id_post):
     comments = Comentario.objects.order_by('-id').filter(post = id_post, publicado = True)
 
     if request.method == 'POST':
-            form = ComentarioForm(request.POST)
+        form = ComentarioForm(request.POST)
 
-            if form.is_valid():
-                comment = form.save(commit=False)
-                comment.post = post
-                comment.publicado = True
-                comment.save()
-                
-                form = ComentarioForm()
-                
-                return render(request, 'posts/post_detail.html', {'post': post, 'comments': 
-                comments, 'form': form})
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.publicado = True
+            comment.save()
+            
+            form = ComentarioForm()
+            
+            return render(request, 'posts/post_detail.html', {'post': post, 'comments': 
+            comments, 'form': form})
     
     form = ComentarioForm()
 
