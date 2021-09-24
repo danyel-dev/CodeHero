@@ -84,8 +84,18 @@
     margin-bottom: 10px;
 }
 
-.comments small {
-    font: 15px 'Nunito';
+#info-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#info-user small {
+    font: sans-serif;
+}
+
+#info-user i {
+    color: rgba(255, 0, 0, 0.849);
 }
 
 /* post-add-comment */

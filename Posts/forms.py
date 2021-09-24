@@ -7,14 +7,9 @@ class ComentarioForm(forms.ModelForm):
     
     class Meta:
         model = Comentario
-        fields = ('nome', 'titulo', 'comentario')
+        fields = ('titulo', 'comentario')
 
         widgets = {
-            'nome': forms.TextInput(attrs={
-                'class': 'name_comment', 
-                'placeholder': 'Digite seu nome'
-            }),
-
             'titulo': forms.TextInput(attrs={
                 'class': 'title_comment', 
                 'placeholder': 'Informe um titulo pro comentario'

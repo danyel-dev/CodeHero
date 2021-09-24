@@ -73,6 +73,7 @@ def post_detail(request, id_post):
             comment = form.save(commit=False)
             comment.post = post
             comment.publicado = True
+            comment.user = request.user
             comment.save()
             
             form = ComentarioForm()
@@ -83,3 +84,10 @@ def post_detail(request, id_post):
     form = ComentarioForm()
 
     return render(request, 'posts/post_detail.html', {'post': post, 'comments': comments, 'form': form})
+
+
+def delete_comment(request, id_comment):
+    comment = get_object_or_404(Comentario, pk=id_comment)
+    comment.delete()
+    messages.success(request, 'Seu comentário foi deletado com sucesso')
+    return redirect('post-detail', comment.post.id)

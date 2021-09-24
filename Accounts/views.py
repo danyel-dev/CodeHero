@@ -21,7 +21,7 @@ def login(request):
     auth.login(request, user)
     messages.success(request, 'Você fez login com sucesso!')
 
-    return redirect('/')
+    return redirect('home')
 
 
 def register(request):

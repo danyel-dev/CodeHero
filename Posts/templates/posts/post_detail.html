@@ -21,6 +21,8 @@
         {{ post.conteudo|safe }}
 
         <div class="post-detail-comments">
+            {% include 'partials/_messages.html' %}
+            
             <h1>{{ comments.count }} comentario(s)</h1>
 
             {% if comments %}
@@ -30,35 +32,40 @@
                             <h2>{{ comment.titulo }}</h2>
                             <p>{{ comment.comentario }}</p>
                             
-                            <small>
-                                {{ comment.nome }} - {{ comment.data_comentario|naturalday|title }}
-                            </small>
+                            <div id="info-user">
+                                <small>
+                                    {{ comment.user.first_name }} {{ comment.user.last_name }} - {{ comment.data_comentario|naturalday|title }}
+                                </small>
+
+                                {% if request.user == comment.user %}
+                                    <a href="{% url 'delete-comment' comment.id %}"><i class="fas fa-trash"></i></a>
+                                {% endif %}
+                            </div>
                         </div>
                     {% endfor %}
                 </div>
             {% endif %}
         </div>
 
-        
-        <div id="post-add-comment">
-            <form method="post">
-                {% csrf_token %}
+        {% if user.is_authenticated %}
+            <div id="post-add-comment">
+                <form method="post">
+                    {% csrf_token %}
 
-                <p>
-                    <label for="id_nome">Nome</label>
-                    {{ form.nome }}
-                </p>
-                <p>
-                    <label for="id_titulo">Título</label>
-                    {{ form.titulo }}
-                </p>
-                <p>
-                    <label for="id_comentario">Comentario</label>
-                    {{ form.comentario }}
-                </p>
+                    <p>
+                        <label for="id_titulo">Título</label>
+                        {{ form.titulo }}
+                    </p>
+                    <p>
+                        <label for="id_comentario">Comentario</label>
+                        {{ form.comentario }}
+                    </p>
 
-                <button type="submit" class='btn btn-success'>Comentar</button>
-            </form>
-        </div>
+                    <button type="submit" class='btn btn-success'>Comentar</button>
+                </form>
+            </div>
+        {% else %}
+            <h4>Quer fazer um comentário? Então faça login</h4>
+        {% endif %}
     </main>
 {% endblock %}
