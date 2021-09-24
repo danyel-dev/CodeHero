@@ -36,7 +36,7 @@ class Post(models.Model):
 class Comentario(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
-    nome = models.CharField(max_length=50, verbose_name='Nome')
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
     titulo = models.CharField(max_length=100, verbose_name='Título do comentário')
     
