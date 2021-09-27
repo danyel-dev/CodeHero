@@ -31,8 +31,14 @@
                 <div class="post-comments">
                     {% for comment in comments %}
                         <div class="comments">
-                            <h2>{{ comment.titulo }}</h2>
-                            <p>{{ comment.comentario }}</p>
+                            <div class="img-title-comment">
+                                <a href="#">{{ comment.user.first_name|first_lyric }}{{ comment.user.last_name|first_lyric }}</a>
+                                
+                                <div class="info-comment">
+                                    <h2>{{ comment.titulo }}</h2>
+                                    <p>{{ comment.comentario }}</p>
+                                </div>
+                            </div>
                             
                             <div id="info-user">
                                 <small>

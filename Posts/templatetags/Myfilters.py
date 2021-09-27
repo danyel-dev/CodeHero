@@ -12,3 +12,8 @@ def plural_comments(num_comments):
         return '1 Comentário'
 
     return f'{num_comments} Comentários'
+
+
+@register.filter(name='first_lyric')
+def first_lyric(name):
+    return name[0]
