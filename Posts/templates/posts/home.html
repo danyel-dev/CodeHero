@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load Myfilters %}
 
 {% block 'title' %} Blog CodeHero {% endblock %}
 
@@ -77,7 +78,7 @@
                                     
                                     <a class="comments" href="#">
                                         <i class="fa fa-comment"></i>
-                                        <span>{{ post.number_comments }} Comentários</span>
+                                        <span>{{ post.number_comments|plural_comments }}</span>
                                     </a>
                                 </div>
                             </div>

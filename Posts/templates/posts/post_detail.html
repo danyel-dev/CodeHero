@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+
 {% load static %}
 {% load humanize %}
+{% load Myfilters %}
 
 {% block 'title' %} {{ post.titulo }} {% endblock %}
 
@@ -23,7 +25,7 @@
         <div class="post-detail-comments">
             {% include 'partials/_messages.html' %}
             
-            <h1>{{ comments.count }} comentario(s)</h1>
+            <h1>{{ comments.count|plural_comments }}</h1>
 
             {% if comments %}
                 <div class="post-comments">
