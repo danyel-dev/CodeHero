@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.db.models import Q, Count, Case, When
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.db import connection
 
 from .models import Post
 from .models import Comentario
@@ -22,6 +23,8 @@ def home(request):
         )
     ).filter(publicado = True)
     
+    posts = posts.select_related('categoria')
+
     paginator = Paginator(posts, 6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -49,6 +52,8 @@ def home_search(request):
         Q(categoria__nome_categoria__iexact = search),
         publicado = True
     )
+
+    posts = posts.select_related('categoria')
     
     number_posts = posts.count()
     
@@ -64,20 +69,22 @@ def home_search(request):
 
 def post_detail(request, id_post):
     post = get_object_or_404(Post, id = id_post)
+
     comments = Comentario.objects.order_by('-id').filter(post = id_post, publicado = True)
+    comments = comments.select_related('user')
 
     if request.method == 'POST':
         form = ComentarioForm(request.POST)
 
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.publicado = True
-            comment.user = request.user
-            comment.save()
+            form = form.save(commit=False)
+            form.post = post
+            form.user = request.user
+            form.publicado = True
+            form.save()
             
             form = ComentarioForm()
-            
+
             return render(request, 'posts/post_detail.html', {'post': post, 'comments': 
             comments, 'form': form})
     

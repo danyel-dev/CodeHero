@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'Posts',
     'Accounts',
+    'axes',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'CODEHERO.urls'
@@ -150,3 +152,12 @@ MESSAGE_TAGS = {
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 INSTALLED_APPS += ('django_summernote', )
+
+# Axes
+AUTHENTICATION_BACKENDS = [
+    # AxesBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
+    'axes.backends.AxesBackend',
+
+    # Django ModelBackend is the default authentication backend.
+    'django.contrib.auth.backends.ModelBackend',
+]

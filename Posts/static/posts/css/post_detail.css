@@ -100,7 +100,7 @@
 #info-user {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 
 #info-user small {
@@ -121,6 +121,7 @@
 #post-add-comment label {
     display: block;
     font-family: 'Nunito';
+    margin-bottom: 3px;
 }
 
 #post-add-comment input {
