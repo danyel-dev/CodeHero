@@ -39,7 +39,7 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        self.resize_image(self.imagem.name, 800)
+        # self.resize_image(self.imagem.name, 800)
 
 
     @staticmethod
