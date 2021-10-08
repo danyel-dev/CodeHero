@@ -73,9 +73,9 @@ def post_detail(request, id_post):
     comments = Comentario.objects.order_by('-id').filter(post = id_post, publicado = True)
     comments = comments.select_related('user')
 
-    if request.method == 'POST':
-        form = ComentarioForm(request.POST)
-        
+    form = ComentarioForm(request.POST or None)
+
+    if request.method == 'POST':    
         if form.is_valid():
             form = form.save(commit=False)
             form.post = post
@@ -85,12 +85,11 @@ def post_detail(request, id_post):
             
             form = ComentarioForm()
 
-            return render(request, 'posts/post_detail.html', {'post': post, 'comments': 
-            comments, 'form': form})
-    
-    form = ComentarioForm()
-
-    return render(request, 'posts/post_detail.html', {'post': post, 'comments': comments, 'form': form})
+    return render(request, 'posts/post_detail.html', {
+        'post': post,
+        'comments': comments,
+        'form': form
+    })
 
 
 def delete_comment(request, id_comment):

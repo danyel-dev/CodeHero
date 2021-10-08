@@ -57,7 +57,7 @@
 
         {% if user.is_authenticated %}
             <div id="post-add-comment">
-                <form method="post">
+                <form method="post" action="#post-add-comment">
                     {% csrf_token %}
 
                     <p>
