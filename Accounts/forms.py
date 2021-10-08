@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserForm(UserCreationForm):
     def clean(self):
+        # self.cleaned_data['username'] = 'amenotijaraka'
         data = self.cleaned_data
 
         username = data.get('username')

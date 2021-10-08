@@ -38,6 +38,7 @@ class Post(models.Model):
 
 
     def save(self, *args, **kwargs):
+        # self.titulo = f'{self.titulo} hello'
         super().save(*args, **kwargs)
         # self.resize_image(self.imagem.name, 800)
 
