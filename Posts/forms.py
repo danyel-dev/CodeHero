@@ -11,7 +11,7 @@ class ComentarioForm(forms.ModelForm):
         widgets = {
             'titulo': forms.TextInput(attrs={
                 'class': 'title_comment', 
-                'placeholder': 'Informe um titulo pro comentario'
+                'placeholder': 'Informe um titulo pro comentario',
             }),
             
             'comentario': forms.Textarea(attrs={

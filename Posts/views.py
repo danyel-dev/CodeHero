@@ -75,7 +75,7 @@ def post_detail(request, id_post):
 
     if request.method == 'POST':
         form = ComentarioForm(request.POST)
-
+        
         if form.is_valid():
             form = form.save(commit=False)
             form.post = post

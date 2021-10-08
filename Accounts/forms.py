@@ -22,7 +22,6 @@ class UserForm(UserCreationForm):
                 'username',
                 'nome de usuário já existente'
             )
-
         
         if len(first_name) < 5:
             self.add_error(
