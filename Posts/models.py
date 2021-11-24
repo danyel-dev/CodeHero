@@ -14,7 +14,6 @@ class Categoria(models.Model):
         return self.nome_categoria
 
 
-
 class Post(models.Model):
     autor = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Autor')
 
